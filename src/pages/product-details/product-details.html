@@ -6,11 +6,12 @@
 
 </ion-header>
 
-
 <ion-content>
 
   <ion-fab right top edge (click)="openCart()">
-    <button ion-fab color="danger"><ion-icon name="cart"></ion-icon></button>
+    <button ion-fab color="danger">
+      <ion-icon name="cart"></ion-icon>
+    </button>
   </ion-fab>
 
   <ion-card>
@@ -31,7 +32,6 @@
       <p [innerHTML]="product.description"></p>
 
     </ion-card-content>
-
 
   </ion-card>
 
@@ -76,22 +76,22 @@
       <ion-grid>
         <ion-row *ngFor="let review of reviews">
           <ion-col col-4>
-            <b>{{ review.reviewer_name }}</b><br/>
+            <b>{{ review.reviewer_name }}</b><br />
             <span *ngIf="review.rating >= 1">
-            <ion-icon style="color: #d4af37" small name="star"></ion-icon>
-          </span>
+              <ion-icon style="color: #d4af37" small name="star"></ion-icon>
+            </span>
             <span *ngIf="review.rating >= 2">
-            <ion-icon style="color: #d4af37" small name="star"></ion-icon>
-          </span>
+              <ion-icon style="color: #d4af37" small name="star"></ion-icon>
+            </span>
             <span *ngIf="review.rating >= 3">
-            <ion-icon style="color: #d4af37" small name="star"></ion-icon>
-          </span>
+              <ion-icon style="color: #d4af37" small name="star"></ion-icon>
+            </span>
             <span *ngIf="review.rating >= 4">
-            <ion-icon style="color: #d4af37" small name="star"></ion-icon>
-          </span>
+              <ion-icon style="color: #d4af37" small name="star"></ion-icon>
+            </span>
             <span *ngIf="review.rating >= 5">
-            <ion-icon style="color: #d4af37" small name="star"></ion-icon>
-          </span>
+              <ion-icon style="color: #d4af37" small name="star"></ion-icon>
+            </span>
 
           </ion-col>
           <ion-col col-8>
@@ -108,7 +108,8 @@
 <ion-footer>
   <ion-toolbar>
     <button ion-button icon-left block outline color="danger" (click)="addToCart(product)">
-      <ion-icon name="basket"></ion-icon> {{ requireOptions ? 'Select Product Options' : 'Add to Cart for ' + '$' + ' ' + productPrice}}
+      <ion-icon name="basket"></ion-icon> {{ requireOptions ? 'Select Product Options' : 'Add to Cart for ' + '$' + ' '
+      + productPrice}}
     </button>
   </ion-toolbar>
 </ion-footer>

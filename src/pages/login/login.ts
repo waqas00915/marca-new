@@ -36,54 +36,39 @@ export class Login {
             res => {
                 console.log('sees', res);
                 this.alertCtrl.create({ message: res.text() })
+
+                let response = res.json();
+
+                if (response.error) {
+                    this.toastCtrl.create({
+                        message: response.error,
+                        duration: 5000
+                    }).present();
+                    return;
+                }
+
+                this.storage.set("userLoginInfo", { user: { email: response.data.user_email, id: response.data.ID } }).then((data) => {
+                    this.alertCtrl.create({
+                        title: "Login Successful",
+                        message: "You have been logged in successfully.",
+                        buttons: [{
+                            text: "OK",
+                            handler: () => {
+
+                                this.events.publish("updateMenu");
+
+                                if (this.navParams.get("next")) {
+                                    this.navCtrl.push(this.navParams.get("next"));
+                                } else {
+                                    this.navCtrl.pop();
+                                }
+                            }
+                        }]
+                    }).present();
+                });
             }, err => {
                 console.log('errr', err);
             });
-        // this.http.post(url, { log: this.username, pwd: this.password, forAPI: 'LUNAPI' }, {}).subscribe(res => {
-        //     console.log('sees', res);
-        //     this.alertCtrl.create({ message: res.text() })
-        // }, err => {
-        //     console.log('errr', err);
-        // })
-        // this.http.post('https://marca.pk/wp-login.php', { log: this.username, pwd: this.password, forAPI: "LUNAPI" }, {}).then(res => {
-        //     console.log(res);
-        // }).catch(err => {
-        //     console.log(err);
-        // })
-        // return;
-        // this.http.post("https://marca.pk/wp-login.php", { log: this.username, pwd: this.password, forAPI: "LUNAPI" })
-        //     .subscribe((res) => {
-
-        //         let response = res.json();
-
-        //         if (response.error) {
-        //             this.toastCtrl.create({
-        //                 message: response.error,
-        //                 duration: 5000
-        //             }).present();
-        //             return;
-        //         }
-
-        //         this.storage.set("userLoginInfo", response).then((data) => {
-        //             this.alertCtrl.create({
-        //                 title: "Login Successful",
-        //                 message: "You have been logged in successfully.",
-        //                 buttons: [{
-        //                     text: "OK",
-        //                     handler: () => {
-
-        //                         this.events.publish("updateMenu");
-
-        //                         if (this.navParams.get("next")) {
-        //                             this.navCtrl.push(this.navParams.get("next"));
-        //                         } else {
-        //                             this.navCtrl.pop();
-        //                         }
-        //                     }
-        //                 }]
-        //             }).present();
-        //         })
-        //     });
     }
     SignupPage() {
         this.navCtrl.push("Signup");
