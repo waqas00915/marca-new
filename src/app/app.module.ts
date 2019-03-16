@@ -18,7 +18,6 @@ import { HttpModule } from '@angular/http';
 import { PayPal } from '@ionic-native/paypal';
 // import { SearchPage } from '../pages/search/search';
 import { IonicStorageModule } from '@ionic/storage';
-<<<<<<< HEAD
 import { WoocommerceProvider } from '../providers/woocommerce/woocommerce';
 
 @NgModule({
@@ -46,37 +45,3 @@ import { WoocommerceProvider } from '../providers/woocommerce/woocommerce';
     ]
 })
 export class AppModule { }
-=======
-import { OneSignal } from "@ionic-native/onesignal";
-import { WoocommerceProvider } from '../providers/woocommerce/woocommerce';
-import { AngularFireAuthModule, AngularFireAuth } from '@angular/fire/auth';
-
-@NgModule({
-  declarations: [
-    MyApp,
-    Cart
-  ],
-  imports: [
-    BrowserModule,
-    HttpModule,
-    IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot(),
-  ],
-  bootstrap: [IonicApp],
-  entryComponents: [
-    MyApp,
-    Cart
-  ],
-  providers: [
-    StatusBar,
-    SplashScreen,
-    PayPal,
-    OneSignal,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
-    WoocommerceProvider,
-    AngularFireAuthModule,
-    AngularFireAuth,
-  ]
-})
-export class AppModule {}
->>>>>>> b9e6612a218c9c2511f72867d12760f3f38fb359
