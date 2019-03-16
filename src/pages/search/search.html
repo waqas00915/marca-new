@@ -16,7 +16,11 @@
 <ion-content padding>
   <h1 *ngIf="temp">No products found</h1>
   <ion-list>
+<<<<<<< HEAD
     <ion-item *ngFor="let product of products" text-wrap (click)="openProductPage(product)">
+=======
+    <ion-item *ngFor="let product of products" text-wrap  (click)="openProductPage(product)">
+>>>>>>> b9e6612a218c9c2511f72867d12760f3f38fb359
       <ion-thumbnail item-left>
         <img [src]="product.images[0].src" />
       </ion-thumbnail>
@@ -48,7 +52,11 @@
       </button>
     </ion-item>
   </ion-list>
+<<<<<<< HEAD
   <ion-infinite-scroll (ionInfinite)="loadMoreProducts($event)">
+=======
+   <ion-infinite-scroll (ionInfinite)="loadMoreProducts($event)">
+>>>>>>> b9e6612a218c9c2511f72867d12760f3f38fb359
     <ion-infinite-scroll-content></ion-infinite-scroll-content>
   </ion-infinite-scroll>
 </ion-content>
