@@ -18,7 +18,10 @@ export class HomePage {
     moreProducts: any[];
     page: number;
     searchQuery: string = "";
+<<<<<<< HEAD
     newitems: any = ["item1","item2","item3"];
+=======
+>>>>>>> 5dfbff6d8a47b706861fe5e1d90f45614baa0da3
 
     @ViewChild('productSlides') productSlides: Slides;
 

@@ -34,7 +34,11 @@ export class Menu {
     this.WooCommerce = WP.init();
 
 
+<<<<<<< HEAD
     this.WooCommerce.getAsync("products/categories?exclude=22").then((data) => {
+=======
+    this.WooCommerce.getAsync("products/categories").then((data) => {
+>>>>>>> 5dfbff6d8a47b706861fe5e1d90f45614baa0da3
       console.log('testing',JSON.parse(data.body));
 
       let temp: any[] = JSON.parse(data.body);
