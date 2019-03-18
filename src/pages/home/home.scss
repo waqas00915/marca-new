@@ -1,0 +1,39 @@
+
+
+    ion-card {
+        margin: 0 !important;
+        width: 100% !important;
+    }
+    ion-thumbnail img{
+        border-radius: 50%;
+    
+    }
+    .arrow-icon{
+        color: #800000;
+    }
+    .banner-container{
+        height: 120px;
+    }
+    .banner-slide{
+        max-width: 25vw;
+    }
+    .banner-slide img{
+        height: 80px;
+        width: 80px;
+        border-radius: 50%;
+        box-shadow: grey 1px 2px 8px;
+    }
+    .new-item-list{
+        text-align: center;
+        display: block;
+        border-bottom: #800000 1px solid;
+        width: 70%;
+        margin: 0 auto;
+    }
+    .new-item-list a{
+        color: #800000;
+        text-decoration: none;
+        font-size: 16px;
+    }
+    
+    

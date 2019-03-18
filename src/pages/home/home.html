@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-navbar color="danger">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+
+  <ion-toolbar color="danger">
+    <ion-searchbar [(ngModel)]="searchQuery" (search)="onSearch($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content no-padding>
+  <ion-card *ngIf='ads.length > 0'>
+    <ion-slides loop="true" autoplay="3000" pager>
+      <ion-slide *ngFor="let ad of ads">
+        <img [src]="ad.images[0].src" />
+      </ion-slide>
+    </ion-slides>
+  </ion-card>
+  <h2 text-center>Our Top Selling Products</h2>
+  <ion-slides class="banner-container">
+    <ion-slide class="banner-slide" *ngFor="let number of newitems">
+      <img [src]="number.images[0].src">
+    </ion-slide>
+  </ion-slides>
+  <!-- <div class="whats-new-sec">
+    <h2 text-center>What's New?</h2>
+    <ion-list *ngFor="let item of newitems">
+      <ion-item class="new-item-list"><a href="#">{{item.name}}</a></ion-item>
+    </ion-list>
+  </div> -->
+  <h2 text-center>Summer Offer</h2>
+  <img style="margin-top: 10px;" src="./assets/images/banner2.jpg" />
+  <h2 text-center>What are you looking for?</h2>
+  <ion-grid>
+    <ion-row>
+      <ion-slides #productSlides>
+        <ion-slide *ngFor="let product of products">
+          <ion-card no-padding>
+            <img [src]="product.featured_src" />
+            <h1 padding center> {{ product.name }} </h1>
+            <p center padding [innerHTML]="product.short_description"></p>
+
+          </ion-card>
+        </ion-slide>
+      </ion-slides>
+    </ion-row>
+  </ion-grid>
+
+  <ion-list>
+    <ion-item *ngFor="let product of moreProducts" text-wrap (click)="openProductPage(product)">
+      <ion-thumbnail item-left>
+        <img [src]="product.images[0].src" />
+      </ion-thumbnail>
+
+      <h2> {{ product.name }} </h2>
+
+      <p>
+        <span [innerHTML]="product.short_description.substr(0, 50) + '...'"></span>
+        <span [innerHTML]="product.price_html"></span>
+      </p>
+
+      <button ion-button icon clear item-right>
+        <ion-icon class="arrow-icon" name="arrow-forward"></ion-icon>
+      </button>
+    </ion-item>
+  </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="loadMoreProducts($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>
