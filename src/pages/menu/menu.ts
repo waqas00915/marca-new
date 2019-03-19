@@ -36,66 +36,70 @@ export class Menu {
     this.WooCommerce.get("products/categories?exclude=22").then((data) => {
       console.log('testing', JSON.parse(data.body));
 
-      let temp: any[] = JSON.parse(data.body);
+      this.WooCommerce.getAsync("products/categories?exclude=22").then((data) => {
+        console.log('testing', JSON.parse(data.body));
 
-      for (let i = 0; i < temp.length; i++) {
-        if (temp[i].parent == 0) {
+        let temp: any[] = JSON.parse(data.body);
 
-          temp[i].subCategories = [];
+        for (let i = 0; i < temp.length; i++) {
+          if (temp[i].parent == 0) {
 
-          if (temp[i].slug == "clothing") {
-            temp[i].icon = "shirt";
-          }
-          if (temp[i].slug == "music") {
-            temp[i].icon = "musical-notes";
-          }
-          if (temp[i].slug == "posters") {
-            temp[i].icon = "images";
-          }
+            temp[i].subCategories = [];
 
-          this.categories.push(temp[i]);
-        }
-      }
+            if (temp[i].slug == "clothing") {
+              temp[i].icon = "shirt";
+            }
+            if (temp[i].slug == "music") {
+              temp[i].icon = "musical-notes";
+            }
+            if (temp[i].slug == "posters") {
+              temp[i].icon = "images";
+            }
 
-      //Groups Subcategories
-
-      for (let i = 0; i < temp.length; i++) {
-        for (let j = 0; j < this.categories.length; j++) {
-          //console.log("Checking " + j + " " + i)
-          if (this.categories[j].id == temp[i].parent) {
-            this.categories[j].subCategories.push(temp[i]);
+            this.categories.push(temp[i]);
           }
         }
-      }
 
+        //Groups Subcategories
 
-
-    }, (err) => {
-      console.log(err)
-    });
-
-    this.events.subscribe("updateMenu", () => {
-      this.storage.ready().then(() => {
-        this.storage.get("userLoginInfo").then((userLoginInfo) => {
-
-          if (userLoginInfo != null) {
-
-            console.log("User logged in...");
-            this.user = userLoginInfo.user;
-            console.log(this.user);
-            this.loggedIn = true;
+        for (let i = 0; i < temp.length; i++) {
+          for (let j = 0; j < this.categories.length; j++) {
+            //console.log("Checking " + j + " " + i)
+            if (this.categories[j].id == temp[i].parent) {
+              this.categories[j].subCategories.push(temp[i]);
+            }
           }
-          else {
-            console.log("No user found.");
-            this.user = {};
-            this.loggedIn = false;
-          }
+        }
 
-        })
+
+
+      }, (err) => {
+        console.log(err)
       });
 
+      this.events.subscribe("updateMenu", () => {
+        this.storage.ready().then(() => {
+          this.storage.get("userLoginInfo").then((userLoginInfo) => {
 
-    })
+            if (userLoginInfo != null) {
+
+              console.log("User logged in...");
+              this.user = userLoginInfo.user;
+              console.log(this.user);
+              this.loggedIn = true;
+            }
+            else {
+              console.log("No user found.");
+              this.user = {};
+              this.loggedIn = false;
+            }
+
+          })
+        });
+
+
+      })
+    });
   }
 
   ionViewDidEnter() {
