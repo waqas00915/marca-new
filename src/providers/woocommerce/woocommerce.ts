@@ -24,15 +24,9 @@ export class WoocommerceProvider {
     });
   }
 
-<<<<<<< HEAD
   init(v2?: boolean) {
     // if(v2 == true){
     return this.WoocommerceV2;
-=======
-  init(v2?: boolean){
-    // if(v2 == true){
-      return this.WoocommerceV2;
->>>>>>> 1c54dd48773dc2cab7bfc05a84c5bf3a2b19399a
     // } else {
     //   return this.Woocommerce;
     // }

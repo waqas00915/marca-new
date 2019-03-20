@@ -41,12 +41,7 @@ export class MyApp {
 
             this.WooCommerce = this.WP.init();
 
-<<<<<<< HEAD
             this.WooCommerce.getAsync("products/categories?exclude=22").then((data) => {
-=======
-
-            this.WooCommerce.getAsync("products/categories").then((data) => {
->>>>>>> 1c54dd48773dc2cab7bfc05a84c5bf3a2b19399a
                 console.log('testing', JSON.parse(data.body));
 
                 let temp: any[] = JSON.parse(data.body);
